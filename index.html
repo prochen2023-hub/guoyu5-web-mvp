@@ -6,16 +6,16 @@
   <meta name="theme-color" content="#5b5ce2" />
   <meta name="description" content="國小五上國語互動學習：分課導讀、跟讀、生字手寫、字詞、造詞造句、閱讀理解與段考複習。" />
   <title>字字探險隊｜五上國語</title>
-  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="manifest" href="./manifest.webmanifest?v=2.1.0" />
   <link rel="icon" href="./assets/app-icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=2.1.0" />
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
       <a class="brand" href="#home" data-nav="home" aria-label="回首頁">
         <span class="brand-mark" aria-hidden="true">字</span>
-        <span><strong>字字探險隊</strong><small>南一五上｜互動學習</small></span>
+        <span><strong>字字探險隊</strong><small>南一五上｜互動學習 <b class="version-badge">V2.1</b></small></span>
       </a>
       <div class="top-actions">
         <div class="streak-pill" title="連續學習天數"><span>🔥</span><strong id="streakCount">4</strong><span>天</span></div>
@@ -107,7 +107,6 @@
         <section class="lesson-step" id="step-words" data-step-panel="words">
           <div class="section-heading compact"><div><p class="eyebrow">WORDS</p><h2>本課練習字詞</h2></div><span class="soft-badge">補充練習版</span></div>
           <div class="word-learning-grid" id="wordLearningGrid"></div>
-          <div class="section-finish"><button class="primary-button" type="button" id="wordsDoneBtn">✓ 我看完本課字詞了</button></div>
           <div class="copyright-note"><strong>📚 教材生字：</strong>目前先放與課題相關的補充練習字詞；正式課本的完整生字、語詞表需由你提供課本頁面／合法資料後再精準匯入。</div>
         </section>
 
@@ -160,6 +159,6 @@
   <dialog class="check-dialog" id="checkDialog"><div class="check-card"><p class="eyebrow">自己核對，比猜分數更重要</p><h2>看看你剛剛寫的字</h2><div class="compare-row"><div><small>正確字</small><strong id="answerCharacter"></strong></div><div><small>你的書寫</small><canvas id="previewCanvas"></canvas></div></div><p>部件、筆畫和位置都對嗎？目前先由孩子核對；後續可再接真正的筆順與字形判定。</p><div class="check-actions"><button type="button" class="ghost-button" id="retryButton">還不熟，再寫一次</button><button type="button" class="primary-button" id="correctButton">我寫對了！+4 XP</button></div></div></dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="./app.js"></script>
+  <script src="./app.js?v=2.1.0"></script>
 </body>
 </html>

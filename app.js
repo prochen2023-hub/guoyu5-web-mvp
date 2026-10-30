@@ -1,3 +1,4 @@
+const APP_VERSION = '2.1.0';
 const stateKey = 'guoyu5_state_v2';
 const defaults = { xp: 35, weeklyXp: 180, streak: 4, goalDone: 3, mastered: 12, rescued: 7, completedChars: [], lessonProgress: {} };
 let state;
@@ -216,6 +217,13 @@ canvas=$('#writingCanvas');canvas.addEventListener('pointerdown',startStroke,{pa
 
 function renderRescue(){ $('#rescueWords').innerHTML=rescueMissions.map((m,i)=>`<button class="word-chip" type="button" data-rescue-index="${i}"><span>${m.char}</span><small>${i===0?'昨天忘了 2 次':i===1?'3 天後複習':'今日練習'}</small></button>`).join(''); $$('[data-rescue-index]').forEach(b=>b.addEventListener('click',()=>{missionQueue=[rescueMissions[Number(b.dataset.rescueIndex)]];loadMission(0);openHandwritingDialog();})); }
 
-if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+if('serviceWorker' in navigator){
+  window.addEventListener('load', async ()=>{
+    try{
+      const reg=await navigator.serviceWorker.register('./sw.js?v=2.1.0', {updateViaCache:'none'});
+      await reg.update();
+    }catch(err){ console.warn('Service Worker update skipped:',err); }
+  });
+}
 renderLessonCards();renderRescue();bindLessonOpeners();updateUI();
 const hash=location.hash.slice(1); if(hash.startsWith('lesson-'))openLesson(Number(hash.split('-')[1])); else if(hash&&$(`[data-view="${hash}"]`))navigate(hash);
