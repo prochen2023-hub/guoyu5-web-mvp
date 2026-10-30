@@ -1,53 +1,28 @@
-# 字字探險隊｜國小五上國語 MVP
+# 字字探險隊｜五上國語 V2
 
-第一版可直接部署的靜態 PWA，目標是「短任務、立即回饋、平板優先、手寫核心」。
+Tablet-first / Mobile-friendly 的國小五上國語互動學習網站。
 
-## 已完成
-- Tablet-first responsive UI：手機、平板直向、平板橫向、桌機。
-- 今日任務、XP、連續學習、今日進度、成就頁。
-- 手寫田字格：Pointer Events，支援手指、觸控筆、滑鼠。
-- 手寫復原／清除／三段提示／答案自我核對。
-- 原生輸入法欄位：可在手機或平板切換系統手寫鍵盤。
-- localStorage 學習進度保存。
-- Web Speech API 句子朗讀（瀏覽器支援時）。
-- manifest + service worker，可加入主畫面並快取基本頁面。
+## V2 新增
+- 12 課分課架構：四單元、期中 1–6、期末 7–12
+- 每課六個學習關卡：導讀、跟讀、字詞、造詞造句、閱讀測驗、手寫
+- 原創跟讀短文：Speech Synthesis 逐句朗讀、句子高亮、跟讀模式
+- 每課 3 題閱讀理解＋證據句提示
+- 造詞參考、自我檢查式造句
+- 本課手寫字快捷入口
+- 手機手寫防捲動：touch-action:none + passive:false touchmove + modal scroll lock
+- LocalStorage 保留 XP、手寫與分課進度
 
-## 目前刻意沒有假裝完成的功能
-第一版**沒有**做真正的中文字形 OCR 或筆順判定。孩子完成書寫後，畫面會並排顯示正確字與自己的字，讓孩子自我核對。第二階段可接 Hanzi Writer/自建筆順資料，做逐筆判斷。
+## 內容版權說明
+網站目前不重製南一版課文全文。12 課課名依公開課程架構建立；每課導讀、短文、閱讀題、例句皆為本專案原創內容。
+「本課練習字詞」為補充練習版，不宣稱等同出版社完整生字語詞表。若家長提供合法取得的課本頁面或文字，可再精準匯入。
 
-## 本機預覽
-```bash
-python -m http.server 8080
-```
-打開 `http://localhost:8080`。
-
-## Git / branch deployment 建議
-```bash
-git init
-git add .
-git commit -m "feat: initial tablet-first guoyu learning MVP"
-git branch -M main
-git checkout -b dev
-```
+## GitHub Pages / branch deploy
+本專案為純靜態網站，不需要 build。
 
 建議：
 - `main`：正式版
 - `dev`：測試版
-- `feature/handwriting`：筆順／字形辨識
-- `feature/content-nani-5a`：南一五上教材資料
+- `feature/handwriting-scroll-lock`：手寫修正
+- `feature/lesson-content`：分課內容
 
-### GitHub Pages（branch deploy）
-如果 repository 使用 GitHub Pages 的 **Deploy from a branch**：
-1. Repository → Settings → Pages。
-2. Source 選 `Deploy from a branch`。
-3. Branch 選要發布的分支（例如 `dev`），folder 選 `/ (root)`。
-4. 正式版再切換到 `main`，或保留另一個測試 repository / Pages 環境。
-
-本專案是純靜態檔案，不需要 build step。
-
-## 下一階段
-1. 匯入南一五上課程「課名／生字／詞語／學習重點」的結構化資料（避免直接複製整篇課文）。
-2. 真正的筆順與字形判定。
-3. spaced repetition：依錯字時間安排隔天、3 天、7 天複習。
-4. 閱讀偵探：題目 → 找證據 → 句子標亮。
-5. 家長檢視頁：只看易忘字、完成率與近 7 天進步，不做壓力式排名。
+GitHub Pages 可設定 `Deploy from a branch`，選擇指定 branch 的 `/ (root)`。
