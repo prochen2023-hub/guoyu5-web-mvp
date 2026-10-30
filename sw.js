@@ -1,10 +1,10 @@
-const CACHE = 'guoyu5-v2.1.0-20261030';
+const CACHE = 'guoyu5-v4.0.0-20261030';
 const CORE = [
   './',
   './index.html',
-  './styles.css?v=2.1.0',
-  './app.js?v=2.1.0',
-  './manifest.webmanifest?v=2.1.0',
+  './styles.css?v=4.0.0',
+  './app.js?v=4.0.0',
+  './manifest.webmanifest?v=4.0.0',
   './assets/app-icon.svg',
   './assets/icon-192.png',
   './assets/icon-512.png'

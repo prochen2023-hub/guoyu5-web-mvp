@@ -6,16 +6,16 @@
   <meta name="theme-color" content="#5b5ce2" />
   <meta name="description" content="國小五上國語互動學習：分課導讀、跟讀、生字手寫、字詞、造詞造句、閱讀理解與段考複習。" />
   <title>字字探險隊｜五上國語</title>
-  <link rel="manifest" href="./manifest.webmanifest?v=2.1.0" />
+  <link rel="manifest" href="./manifest.webmanifest?v=4.0.0" />
   <link rel="icon" href="./assets/app-icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="./styles.css?v=2.1.0" />
+  <link rel="stylesheet" href="./styles.css?v=4.0.0" />
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
       <a class="brand" href="#home" data-nav="home" aria-label="回首頁">
         <span class="brand-mark" aria-hidden="true">字</span>
-        <span><strong>字字探險隊</strong><small>南一五上｜互動學習 <b class="version-badge">V2.1</b></small></span>
+        <span><strong>字字探險隊</strong><small>南一五上｜互動學習 <b class="version-badge">V4.0</b></small></span>
       </a>
       <div class="top-actions">
         <div class="streak-pill" title="連續學習天數"><span>🔥</span><strong id="streakCount">4</strong><span>天</span></div>
@@ -48,12 +48,12 @@
           <article class="exam-card midterm">
             <div class="exam-icon">🎯</div>
             <div><p class="eyebrow">期中複習</p><h2>第 1～6 課</h2><p>品格小學堂＋自然筆記。先把前半冊字詞、閱讀與造句穩住。</p></div>
-            <button class="round-go" type="button" data-range="midterm" aria-label="查看期中範圍">→</button>
+            <div class="exam-card-actions"><button class="small-button" type="button" data-open-exam="midterm-A">A 卷</button><button class="small-button" type="button" data-open-exam="midterm-B">B 卷</button><button class="round-go" type="button" data-range="midterm" aria-label="查看期中範圍">→</button></div>
           </article>
           <article class="exam-card finalterm">
             <div class="exam-icon">🏁</div>
             <div><p class="eyebrow">期末複習</p><h2>第 7～12 課</h2><p>用心看世界＋作家風華。後半冊可以依課次逐一闖關。</p></div>
-            <button class="round-go" type="button" data-range="final" aria-label="查看期末範圍">→</button>
+            <div class="exam-card-actions"><button class="small-button" type="button" data-open-exam="final-A">A 卷</button><button class="small-button" type="button" data-open-exam="final-B">B 卷</button><button class="round-go" type="button" data-range="final" aria-label="查看期末範圍">→</button></div>
           </article>
         </section>
 
@@ -61,8 +61,10 @@
         <div class="mission-grid">
           <article class="mission-card mission-purple"><div class="mission-icon">📖</div><div class="mission-content"><div class="mission-meta"><span>跟讀任務</span><strong>+15 XP</strong></div><h3>聽一句，跟一句</h3><p>系統逐句朗讀並標亮，孩子讀完再進下一句。</p><div class="mini-progress"><span style="width:25%"></span></div><small>今天完成 1 / 4</small></div><button class="round-go" type="button" data-open-lesson="1">→</button></article>
           <article class="mission-card mission-yellow"><div class="mission-icon">✍️</div><div class="mission-content"><div class="mission-meta"><span>字字救援</span><strong>+20 XP</strong></div><h3>手寫 5 個容易忘的字</h3><p>手機上書寫時鎖定手寫板，不再跟著頁面上下滑。</p><div class="mini-progress"><span style="width:40%"></span></div><small>2 / 5 個字完成</small></div><button class="round-go" type="button" data-open-handwriting>→</button></article>
-          <article class="mission-card mission-green"><div class="mission-icon">🔎</div><div class="mission-content"><div class="mission-meta"><span>閱讀偵探</span><strong>+10 XP</strong></div><h3>從短文找證據</h3><p>每課都有原創練習短文與 3 題閱讀理解。</p><div class="mini-progress"><span style="width:0%"></span></div><small>0 / 3 題</small></div><button class="round-go" type="button" data-open-lesson="2">→</button></article>
+          <article class="mission-card mission-green"><div class="mission-icon">🔎</div><div class="mission-content"><div class="mission-meta"><span>閱讀偵探</span><strong>+10 XP</strong></div><h3>從短文找證據</h3><p>每課都有原創練習短文與 5 題分層閱讀理解。</p><div class="mini-progress"><span style="width:0%"></span></div><small>0 / 3 題</small></div><button class="round-go" type="button" data-open-lesson="2">→</button></article>
         </div>
+
+        <section class="mock-exam-banner"><div><span class="mock-icon">📝</span><div><p class="eyebrow">MONTHLY EXAM</p><h2>月考模擬 A／B 卷</h2><p>每卷 100 分、建議 45 分鐘。完成後看弱點報告，錯題會自動回收。</p></div></div><button class="primary-button" type="button" data-nav="exams">進入模擬考場 →</button></section>
 
         <section class="rescue-strip"><div class="rescue-title"><span>🛟</span><div><p class="eyebrow">MEMORY RESCUE</p><h2>今天要救回的字</h2></div></div><div class="word-chips" id="rescueWords"></div></section>
       </section>
@@ -95,19 +97,19 @@
 
         <section class="lesson-step active" id="step-guide" data-step-panel="guide">
           <div class="content-card guide-card"><div><p class="eyebrow">先抓大意</p><h2>這課在學什麼？</h2><p id="lessonSummary" class="large-copy"></p></div><div class="goal-list" id="lessonGoals"></div></div>
-          <div class="copyright-note"><strong>📌 說明：</strong>這裡是依課名與學習主題製作的原創導讀，不重製出版社課文。若家長之後提供合法取得的課文文字或照片，可直接放進「跟讀」模組。</div>
+          <div class="copyright-note"><strong>📌 說明：</strong>課名、單元、生字與新詞依公開課程資料核對；導讀、跟讀短文與閱讀題為本站原創練習，不重製出版社課文全文。若家長提供合法取得的課文頁面，可再切換成「課本逐句跟讀」。</div>
         </section>
 
         <section class="lesson-step" id="step-read" data-step-panel="read">
-          <div class="reading-toolbar"><div><p class="eyebrow">READ ALONG</p><h2>原創跟讀短文</h2><p>先聽系統讀，再自己跟著讀。正在朗讀的句子會亮起來。</p></div><div class="read-controls"><label>速度 <select id="speechRate"><option value="0.72">慢速</option><option value="0.86" selected>適中</option><option value="1">正常</option></select></label><button class="ghost-button" id="listenAll" type="button">🔊 全文聽讀</button><button class="primary-button" id="followRead" type="button">🗣️ 開始跟讀</button></div></div>
+          <div class="reading-toolbar"><div><p class="eyebrow">READ ALONG</p><h2>延伸跟讀短文</h2><p>先聽系統讀，再自己跟著讀。正在朗讀的句子會亮起來。</p></div><div class="read-controls"><label>速度 <select id="speechRate"><option value="0.72">慢速</option><option value="0.86" selected>適中</option><option value="1">正常</option></select></label><button class="ghost-button" id="listenAll" type="button">🔊 全文聽讀</button><button class="primary-button" id="followRead" type="button">🗣️ 開始跟讀</button></div></div>
           <article class="readalong-card" id="readalongPassage"></article>
           <div class="follow-panel" id="followPanel" hidden><div><span class="follow-badge">輪到你</span><strong id="followPrompt">請把亮起來的句子讀一次</strong></div><button class="primary-button" type="button" id="followNext">我讀完了，下一句 →</button></div>
         </section>
 
         <section class="lesson-step" id="step-words" data-step-panel="words">
-          <div class="section-heading compact"><div><p class="eyebrow">WORDS</p><h2>本課練習字詞</h2></div><span class="soft-badge">補充練習版</span></div>
+          <div class="section-heading compact"><div><p class="eyebrow">WORDS</p><h2>本課生字與新詞</h2></div><span class="soft-badge">南一五上核對版</span></div>
           <div class="word-learning-grid" id="wordLearningGrid"></div>
-          <div class="copyright-note"><strong>📚 教材生字：</strong>目前先放與課題相關的補充練習字詞；正式課本的完整生字、語詞表需由你提供課本頁面／合法資料後再精準匯入。</div>
+          <div class="copyright-note"><strong>📚 資料說明：</strong>生字與新詞依公開的南一五上課程計畫、學習資源逐課核對整理；生字顯示本課語境的注音。詞義與例題為本站重新撰寫，不重製出版社課文全文。</div>
         </section>
 
         <section class="lesson-step" id="step-write" data-step-panel="write">
@@ -118,13 +120,27 @@
         </section>
 
         <section class="lesson-step" id="step-quiz" data-step-panel="quiz">
-          <div class="quiz-head"><div><p class="eyebrow">READING DETECTIVE</p><h2>閱讀偵探：找證據</h2><p>題目都根據上方原創短文，答完會告訴你應該回哪一句找線索。</p></div><div class="score-orb"><strong id="quizScore">0</strong><small>/ 3</small></div></div>
+          <div class="quiz-head"><div><p class="eyebrow">READING DETECTIVE</p><h2>閱讀偵探：找證據</h2><p>題目都根據上方原創短文，答完會告訴你應該回哪一句找線索。</p></div><div class="score-orb"><strong id="quizScore">0</strong><small>/ <span id="quizTotal">5</span></small></div></div>
           <div id="quizArea" class="quiz-area"></div>
         </section>
 
         <section class="lesson-step" id="step-hand" data-step-panel="hand">
           <div class="content-card hand-cta"><div><p class="eyebrow">HANDWRITING</p><h2>把這課的字真正寫進記憶</h2><p>用手指或觸控筆直接寫。手機手寫期間會禁止畫布拖動頁面。</p></div><div id="lessonHandChars" class="hand-char-list"></div></div>
         </section>
+      </section>
+
+      <section class="view" id="view-exams" data-view="exams">
+        <div class="page-title"><p class="eyebrow">MOCK EXAM CENTER</p><h1>月考模擬考場</h1><p>期中、期末各有 A／B 兩卷。題目從本冊已整理的生字、新詞與原創閱讀材料出題。</p></div>
+        <div class="exam-policy"><div><strong>⏱ 建議 45 分鐘</strong><span>不強制倒數，先練穩再練快。</span></div><div><strong>💯 滿分 100</strong><span>客觀題 80 分＋造詞造句自評 20 分。</span></div><div><strong>🛟 錯題回收</strong><span>答錯題目會留在本機，下次可再複習。</span></div></div>
+        <div id="examPaperGrid" class="exam-paper-grid"></div>
+        <section class="mistake-bank"><div class="section-heading compact"><div><p class="eyebrow">MISTAKE BANK</p><h2>錯題回收站</h2></div><button class="ghost-button" type="button" id="clearMistakes">清除已會錯題</button></div><div id="mistakeBank"></div></section>
+      </section>
+
+      <section class="view" id="view-exam" data-view="exam">
+        <div class="exam-detail-head"><button class="back-button" type="button" data-nav="exams">← 回模擬考場</button><div><p class="eyebrow" id="examRangeLabel">期中範圍</p><h1 id="examTitle">月考模擬 A 卷</h1><p id="examMeta">第 1～6 課 · 100 分</p></div><div class="exam-timer-box"><strong id="examTimer">45:00</strong><button class="small-button" type="button" id="timerToggle">開始計時</button></div></div>
+        <div class="exam-toolbar"><div class="exam-progress"><span id="examAnswered">0</span> / <span id="examObjectiveTotal">30</span> 題已作答</div><div><button class="ghost-button" type="button" id="printExam">🖨️ 列印</button><button class="primary-button" type="button" id="submitExam">交卷批改</button></div></div>
+        <div id="examContent" class="exam-content"></div>
+        <section id="examResult" class="exam-result" hidden></section>
       </section>
 
       <section class="view" id="view-handwriting" data-view="handwriting">
@@ -141,7 +157,7 @@
       <button class="nav-item active" type="button" data-nav="home"><span>🏠</span><small>今日</small></button>
       <button class="nav-item" type="button" data-nav="lessons"><span>🗺️</span><small>分課</small></button>
       <button class="nav-item nav-main" type="button" data-nav="handwriting"><span>✍️</span><small>手寫</small></button>
-      <button class="nav-item" type="button" data-nav="reading"><span>🔎</span><small>閱讀</small></button>
+      <button class="nav-item" type="button" data-nav="exams"><span>📝</span><small>模考</small></button>
       <button class="nav-item" type="button" data-nav="achievements"><span>🏆</span><small>成就</small></button>
     </nav>
   </div>
@@ -159,6 +175,6 @@
   <dialog class="check-dialog" id="checkDialog"><div class="check-card"><p class="eyebrow">自己核對，比猜分數更重要</p><h2>看看你剛剛寫的字</h2><div class="compare-row"><div><small>正確字</small><strong id="answerCharacter"></strong></div><div><small>你的書寫</small><canvas id="previewCanvas"></canvas></div></div><p>部件、筆畫和位置都對嗎？目前先由孩子核對；後續可再接真正的筆順與字形判定。</p><div class="check-actions"><button type="button" class="ghost-button" id="retryButton">還不熟，再寫一次</button><button type="button" class="primary-button" id="correctButton">我寫對了！+4 XP</button></div></div></dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="./app.js?v=2.1.0"></script>
+  <script src="./app.js?v=4.0.0"></script>
 </body>
 </html>
