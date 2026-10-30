@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#5b5ce2" />
+  <meta name="description" content="國小五上國語互動學習網站：短任務、手寫練習、閱讀理解與成就激勵。" />
+  <title>字字探險隊｜五上國語</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./assets/app-icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="回首頁">
+        <span class="brand-mark" aria-hidden="true">字</span>
+        <span><strong>字字探險隊</strong><small>五上國語</small></span>
+      </a>
+      <div class="top-actions">
+        <div class="streak-pill" title="連續學習天數"><span>🔥</span><strong id="streakCount">4</strong><span>天</span></div>
+        <div class="xp-pill" title="今日經驗值"><span>⭐</span><strong id="xpValue">35</strong><span>XP</span></div>
+        <button class="avatar-button" type="button" aria-label="學習角色">🦊</button>
+      </div>
+    </header>
+
+    <main id="appMain">
+      <section class="view active" id="view-home" data-view="home">
+        <section class="hero-card">
+          <div>
+            <p class="eyebrow">今天的短目標</p>
+            <h1>15 分鐘，救回 5 個容易忘的字！</h1>
+            <p class="hero-copy">一次只完成一小關。完成今天的任務，就真的可以收工。</p>
+            <div class="hero-buttons">
+              <button class="primary-button" type="button" data-open-handwriting>✍️ 開始第一關</button>
+              <button class="ghost-button" type="button" data-nav="achievements">看看我的進步</button>
+            </div>
+          </div>
+          <div class="goal-orbit" aria-label="今日完成進度">
+            <div class="progress-ring" id="progressRing" style="--progress: 60">
+              <div><strong id="goalDone">3</strong><span>/ 5</span><small>完成</small></div>
+            </div>
+            <div class="orbit-star star-one">★</div>
+            <div class="orbit-star star-two">★</div>
+            <div class="orbit-star star-three">★</div>
+          </div>
+        </section>
+
+        <section class="section-heading">
+          <div><p class="eyebrow">TODAY</p><h2>今日任務</h2></div>
+          <span class="time-badge">⏱ 約 12–15 分鐘</span>
+        </section>
+
+        <div class="mission-grid">
+          <article class="mission-card mission-purple">
+            <div class="mission-icon">✍️</div>
+            <div class="mission-content">
+              <div class="mission-meta"><span>字字救援</span><strong>+20 XP</strong></div>
+              <h3>把容易忘的字找回來</h3>
+              <p>手寫 5 個字，忘記時會一步一步給提示。</p>
+              <div class="mini-progress"><span style="width:40%"></span></div>
+              <small>2 / 5 個字完成</small>
+            </div>
+            <button class="round-go" type="button" aria-label="開始字字救援" data-open-handwriting>→</button>
+          </article>
+
+          <article class="mission-card mission-yellow">
+            <div class="mission-icon">🔎</div>
+            <div class="mission-content">
+              <div class="mission-meta"><span>閱讀偵探</span><strong>+15 XP</strong></div>
+              <h3>找到文章裡的證據</h3>
+              <p>答案不是猜的，找出支持答案的關鍵句。</p>
+              <div class="mini-progress"><span style="width:100%"></span></div>
+              <small>今天已完成</small>
+            </div>
+            <button class="round-go done" type="button" aria-label="閱讀偵探已完成" disabled>✓</button>
+          </article>
+
+          <article class="mission-card mission-green">
+            <div class="mission-icon">🧩</div>
+            <div class="mission-content">
+              <div class="mission-meta"><span>詞語挑戰</span><strong>+10 XP</strong></div>
+              <h3>把詞放進正確情境</h3>
+              <p>不是背解釋，而是判斷「這句話能不能這樣用」。</p>
+              <div class="mini-progress"><span style="width:0%"></span></div>
+              <small>0 / 3 題</small>
+            </div>
+            <button class="round-go" type="button" aria-label="前往詞語挑戰" data-nav="words">→</button>
+          </article>
+        </div>
+
+        <section class="rescue-strip">
+          <div class="rescue-title"><span>🛟</span><div><p class="eyebrow">MEMORY RESCUE</p><h2>今天要救回的字</h2></div></div>
+          <div class="word-chips" id="rescueWords">
+            <button class="word-chip" type="button" data-char="憶"><span>憶</span><small>昨天忘了 2 次</small></button>
+            <button class="word-chip" type="button" data-char="謙"><span>謙</span><small>3 天後複習</small></button>
+            <button class="word-chip" type="button" data-char="擾"><span>擾</span><small>容易少一筆</small></button>
+            <button class="word-chip" type="button" data-char="嚷"><span>嚷</span><small>左右部件易混</small></button>
+            <button class="word-chip" type="button" data-char="綻"><span>綻</span><small>今天新挑戰</small></button>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="view-lessons" data-view="lessons">
+        <div class="page-title"><p class="eyebrow">LESSON MAP</p><h1>課文冒險</h1><p>先看懂文章，再記字詞。教材匯入後，這裡會依南一五上單元展開。</p></div>
+        <div class="placeholder-map">
+          <div class="map-node unlocked"><span>1</span><strong>人物與事件</strong><small>找出誰、做了什麼</small></div>
+          <div class="map-path"></div>
+          <div class="map-node unlocked"><span>2</span><strong>段落線索</strong><small>找時間、原因與結果</small></div>
+          <div class="map-path"></div>
+          <div class="map-node locked"><span>3</span><strong>作者想法</strong><small>完成前兩關解鎖</small></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-handwriting" data-view="handwriting">
+        <div class="page-title"><p class="eyebrow">HANDWRITING LAB</p><h1>生字手寫實驗室</h1><p>手指、觸控筆、滑鼠都能寫。先回想，再看提示。</p></div>
+        <button class="primary-button large-start" type="button" data-open-handwriting>開始 5 字救援任務</button>
+      </section>
+
+      <section class="view" id="view-words" data-view="words">
+        <div class="page-title"><p class="eyebrow">WORD QUEST</p><h1>詞語挑戰</h1><p>第一版先保留入口；後續會做情境判斷、近義詞辨析與拖曳配對。</p></div>
+        <div class="coming-card">🧩 <strong>下一階段功能</strong><span>依課程內容自動產生 3–5 分鐘小任務</span></div>
+      </section>
+
+      <section class="view" id="view-reading" data-view="reading">
+        <div class="page-title"><p class="eyebrow">READING DETECTIVE</p><h1>閱讀偵探</h1><p>每一題都要求找到證據，不只選答案。</p></div>
+        <article class="detective-demo">
+          <span class="case-tag">示範案件</span>
+          <h2>「答案就在文中」和「需要推論」有什麼不同？</h2>
+          <div class="detective-columns"><div><strong>🔵 文中直接找</strong><p>答案可以從一句或幾句文字直接整理出來。</p></div><div><strong>🟣 推論題</strong><p>文章沒有直接說，要把線索組合後才知道。</p></div></div>
+        </article>
+      </section>
+
+      <section class="view" id="view-achievements" data-view="achievements">
+        <div class="page-title"><p class="eyebrow">MY GROWTH</p><h1>我的成就</h1><p>看的是「我比昨天多會了什麼」，不是只有分數。</p></div>
+        <div class="achievement-grid">
+          <article><span>🔥</span><strong id="achievementStreak">4 天</strong><small>連續學習</small></article>
+          <article><span>✍️</span><strong id="masteredCount">12 字</strong><small>已穩定會寫</small></article>
+          <article><span>🛟</span><strong id="rescuedCount">7 字</strong><small>從易忘名單救回</small></article>
+          <article><span>⭐</span><strong id="totalXp">180 XP</strong><small>本週累積</small></article>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要功能">
+      <button class="nav-item active" type="button" data-nav="home"><span>🏠</span><small>今日</small></button>
+      <button class="nav-item" type="button" data-nav="lessons"><span>🗺️</span><small>課文</small></button>
+      <button class="nav-item nav-main" type="button" data-nav="handwriting"><span>✍️</span><small>手寫</small></button>
+      <button class="nav-item" type="button" data-nav="reading"><span>🔎</span><small>閱讀</small></button>
+      <button class="nav-item" type="button" data-nav="achievements"><span>🏆</span><small>成就</small></button>
+    </nav>
+  </div>
+
+  <dialog class="handwriting-dialog" id="handwritingDialog">
+    <form method="dialog" class="dialog-frame" id="handwritingForm">
+      <header class="dialog-header">
+        <div><p class="eyebrow">字字救援 <span id="missionIndex">1</span> / 5</p><h2 id="missionTitle">把「憶」寫回來</h2></div>
+        <button class="icon-button" value="cancel" aria-label="關閉">✕</button>
+      </header>
+
+      <div class="handwriting-layout">
+        <section class="prompt-panel">
+          <div class="prompt-card">
+            <p class="prompt-label">先讀句子，再把空格補完整</p>
+            <p class="prompt-sentence" id="promptSentence">多年以後，我仍清楚記＿＿那一天發生的事情。</p>
+            <button type="button" class="sound-button" id="readSentence">🔊 聽句子</button>
+          </div>
+          <div class="hint-card">
+            <div class="hint-header"><strong>💡 忘記也沒關係，提示一點點就好</strong><span id="hintStage">0 / 3</span></div>
+            <p id="hintText">先不要看答案，想想這個字的部首或左右結構。</p>
+            <button type="button" class="hint-button" id="hintButton">給我一點提示</button>
+          </div>
+          <div class="system-ime">
+            <span>也可以練手機／平板原生手寫輸入</span>
+            <label><span class="sr-only">系統輸入欄</span><input id="imeInput" maxlength="1" inputmode="text" autocomplete="off" placeholder="點這裡叫出鍵盤" /></label>
+          </div>
+        </section>
+
+        <section class="writing-panel">
+          <div class="canvas-wrap" id="canvasWrap">
+            <canvas id="writingCanvas" aria-label="手寫田字格"></canvas>
+            <div class="grid-lines" aria-hidden="true"><span></span><span></span><i></i><i></i></div>
+            <div class="ghost-character" id="ghostCharacter" aria-hidden="true"></div>
+          </div>
+          <div class="writing-toolbar">
+            <button type="button" class="tool-button" id="undoButton">↶ 復原一筆</button>
+            <button type="button" class="tool-button" id="clearButton">🧽 重寫</button>
+            <button type="button" class="primary-button" id="checkButton">✓ 我寫好了</button>
+          </div>
+          <p class="pen-tip">支援手指、Apple Pencil / 觸控筆、滑鼠。書寫時頁面不會跟著滑動。</p>
+        </section>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="check-dialog" id="checkDialog">
+    <div class="check-card">
+      <p class="eyebrow">自己核對，比猜分數更重要</p>
+      <h2>看看你剛剛寫的字</h2>
+      <div class="compare-row"><div><small>正確字</small><strong id="answerCharacter">憶</strong></div><div><small>你的書寫</small><canvas id="previewCanvas"></canvas></div></div>
+      <p>部件、筆畫和位置都對嗎？第一版由孩子自己核對；下一階段再加入真正的筆順與字形判定。</p>
+      <div class="check-actions"><button type="button" class="ghost-button" id="retryButton">還不熟，再寫一次</button><button type="button" class="primary-button" id="correctButton">我寫對了！+4 XP</button></div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
