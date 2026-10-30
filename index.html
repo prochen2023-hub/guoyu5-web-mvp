@@ -6,21 +6,21 @@
   <meta name="theme-color" content="#5b5ce2" />
   <meta name="description" content="國小五上國語互動學習：分課導讀、跟讀、生字手寫、字詞、造詞造句、閱讀理解與段考複習。" />
   <title>字字探險隊｜五上國語</title>
-  <link rel="manifest" href="./manifest.webmanifest?v=4.0.0" />
+  <link rel="manifest" href="./manifest.webmanifest?v=5.0.0" />
   <link rel="icon" href="./assets/app-icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="./styles.css?v=4.0.0" />
+  <link rel="stylesheet" href="./styles.css?v=5.0.0" />
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
       <a class="brand" href="#home" data-nav="home" aria-label="回首頁">
         <span class="brand-mark" aria-hidden="true">字</span>
-        <span><strong>字字探險隊</strong><small>南一五上｜互動學習 <b class="version-badge">V4.0</b></small></span>
+        <span><strong>字字探險隊</strong><small>南一五上｜互動學習 <b class="version-badge">V5.0</b></small></span>
       </a>
       <div class="top-actions">
         <div class="streak-pill" title="連續學習天數"><span>🔥</span><strong id="streakCount">4</strong><span>天</span></div>
         <div class="xp-pill" title="今日經驗值"><span>⭐</span><strong id="xpValue">35</strong><span>XP</span></div>
-        <button class="avatar-button" type="button" aria-label="學習角色">🦊</button>
+        <button class="avatar-button" type="button" data-nav="achievements" aria-label="查看我的成就">🦊</button>
       </div>
     </header>
 
@@ -59,9 +59,9 @@
 
         <section class="section-heading"><div><p class="eyebrow">TODAY</p><h2>今日任務</h2></div><span class="time-badge">⏱ 約 12–15 分鐘</span></section>
         <div class="mission-grid">
-          <article class="mission-card mission-purple"><div class="mission-icon">📖</div><div class="mission-content"><div class="mission-meta"><span>跟讀任務</span><strong>+15 XP</strong></div><h3>聽一句，跟一句</h3><p>系統逐句朗讀並標亮，孩子讀完再進下一句。</p><div class="mini-progress"><span style="width:25%"></span></div><small>今天完成 1 / 4</small></div><button class="round-go" type="button" data-open-lesson="1">→</button></article>
-          <article class="mission-card mission-yellow"><div class="mission-icon">✍️</div><div class="mission-content"><div class="mission-meta"><span>字字救援</span><strong>+20 XP</strong></div><h3>手寫 5 個容易忘的字</h3><p>手機上書寫時鎖定手寫板，不再跟著頁面上下滑。</p><div class="mini-progress"><span style="width:40%"></span></div><small>2 / 5 個字完成</small></div><button class="round-go" type="button" data-open-handwriting>→</button></article>
-          <article class="mission-card mission-green"><div class="mission-icon">🔎</div><div class="mission-content"><div class="mission-meta"><span>閱讀偵探</span><strong>+10 XP</strong></div><h3>從短文找證據</h3><p>每課都有原創練習短文與 5 題分層閱讀理解。</p><div class="mini-progress"><span style="width:0%"></span></div><small>0 / 3 題</small></div><button class="round-go" type="button" data-open-lesson="2">→</button></article>
+          <article class="mission-card mission-purple clickable-card" data-open-lesson-step="5:read" role="button" tabindex="0"><div class="mission-icon">📖</div><div class="mission-content"><div class="mission-meta"><span>跟讀任務</span><strong>+15 XP</strong></div><h3>第 5 課｜聽一句，跟一句</h3><p>《漫遊花東》延伸短文：系統念一句、孩子跟一句，直接進入「跟讀」關卡。</p><div class="mini-progress"><span style="width:25%"></span></div><small>今天目標：完整跟讀 1 篇</small></div><button class="round-go" type="button" aria-label="開始第5課跟讀">→</button></article>
+          <article class="mission-card mission-yellow clickable-card" data-open-handwriting role="button" tabindex="0"><div class="mission-icon">✍️</div><div class="mission-content"><div class="mission-meta"><span>字字救援</span><strong>+20 XP</strong></div><h3>手寫 5 個容易忘的字</h3><p>擁、綵、渲、蕾、綻：先回想，再看部件提示，最後自己核對。</p><div class="mini-progress"><span style="width:40%"></span></div><small>每字約 30 秒，完成就收進記憶庫</small></div><button class="round-go" type="button" aria-label="開始5字手寫救援">→</button></article>
+          <article class="mission-card mission-green clickable-card" data-open-lesson-step="6:quiz" role="button" tabindex="0"><div class="mission-icon">🔎</div><div class="mission-content"><div class="mission-meta"><span>閱讀偵探</span><strong>+10 XP</strong></div><h3>第 6 課｜從短文找證據</h3><p>《護送螃蟹過馬路》延伸閱讀：5 題分成找證據、詞義、推論與主旨，直接進入閱讀測驗。</p><div class="mini-progress"><span style="width:0%"></span></div><small>今天目標：答對 4 / 5 題</small></div><button class="round-go" type="button" aria-label="開始第6課閱讀偵探">→</button></article>
         </div>
 
         <section class="mock-exam-banner"><div><span class="mock-icon">📝</span><div><p class="eyebrow">MONTHLY EXAM</p><h2>月考模擬 A／B 卷</h2><p>每卷 100 分、建議 45 分鐘。完成後看弱點報告，錯題會自動回收。</p></div></div><button class="primary-button" type="button" data-nav="exams">進入模擬考場 →</button></section>
@@ -89,8 +89,8 @@
         <div class="lesson-step-tabs" id="lessonStepTabs">
           <button class="step-tab active" data-step="guide">🧭 導讀</button>
           <button class="step-tab" data-step="read">🔊 跟讀</button>
-          <button class="step-tab" data-step="words">🧩 字詞</button>
-          <button class="step-tab" data-step="write">✏️ 造詞造句</button>
+          <button class="step-tab" data-step="words">🧩 字詞・成語</button>
+          <button class="step-tab" data-step="write">✏️ 造詞造句・成語</button>
           <button class="step-tab" data-step="quiz">🔎 閱讀測驗</button>
           <button class="step-tab" data-step="hand">✍️ 手寫</button>
         </div>
@@ -109,6 +109,7 @@
         <section class="lesson-step" id="step-words" data-step-panel="words">
           <div class="section-heading compact"><div><p class="eyebrow">WORDS</p><h2>本課生字與新詞</h2></div><span class="soft-badge">南一五上核對版</span></div>
           <div class="word-learning-grid" id="wordLearningGrid"></div>
+          <div class="step-complete-row"><button class="primary-button" type="button" id="wordsDoneBtn">✓ 我把本課字詞與成語看完了</button></div>
           <div class="copyright-note"><strong>📚 資料說明：</strong>生字與新詞依公開的南一五上課程計畫、學習資源逐課核對整理；生字顯示本課語境的注音。詞義與例題為本站重新撰寫，不重製出版社課文全文。</div>
         </section>
 
@@ -117,6 +118,7 @@
             <article class="content-card"><p class="eyebrow">造詞</p><h2>一個字，想出更多詞</h2><div id="wordMakingArea"></div></article>
             <article class="content-card"><p class="eyebrow">造句</p><h2>把詞放進完整句子</h2><div id="sentenceArea"></div></article>
           </div>
+          <article class="content-card idiom-practice-card"><p class="eyebrow">IDIOM CHALLENGE</p><h2>成語運用｜不是背意思，要真的會用</h2><p class="muted-copy">先選一個和本課主題有關的成語，再把它放進自己的句子。</p><div id="idiomWritingArea"></div></article>
         </section>
 
         <section class="lesson-step" id="step-quiz" data-step-panel="quiz">
@@ -175,6 +177,6 @@
   <dialog class="check-dialog" id="checkDialog"><div class="check-card"><p class="eyebrow">自己核對，比猜分數更重要</p><h2>看看你剛剛寫的字</h2><div class="compare-row"><div><small>正確字</small><strong id="answerCharacter"></strong></div><div><small>你的書寫</small><canvas id="previewCanvas"></canvas></div></div><p>部件、筆畫和位置都對嗎？目前先由孩子核對；後續可再接真正的筆順與字形判定。</p><div class="check-actions"><button type="button" class="ghost-button" id="retryButton">還不熟，再寫一次</button><button type="button" class="primary-button" id="correctButton">我寫對了！+4 XP</button></div></div></dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="./app.js?v=4.0.0"></script>
+  <script src="./app.js?v=5.0.0"></script>
 </body>
 </html>
